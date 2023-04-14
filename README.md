@@ -12,6 +12,7 @@ total hours spent on the project: 18
 
 
 The basic concept behind the project:
+
 In the grid.py file on line 14 I have what is called my passive grid and in the updating grid.py on line 17 I have what is called my active grid. the passive
 grid is responsible for displaying the placed pieces while the active grid is responsible for displaying the falling pieces. Each zero in the arrays represents
 an empty space in the grid and if there is a number in it asides from a zero it would represent a cube. The reason to why I did this is because I believed that
