@@ -22,6 +22,8 @@ def setup_window():
 
 def display_text(text, x, y, size, color):  # function is used for displaying text
     font = pygame.font.Font("freesansbold.ttf", size)
+    # font = pygame.font.SysFont('comicsansms', size)
+    # print(pygame.font.get_fonts())
     white = (255, 255, 255)
     red = 255, 0, 0
     if color == "white":
@@ -32,27 +34,30 @@ def display_text(text, x, y, size, color):  # function is used for displaying te
 
 
 def monitor_keys(event):
-    if event.type == pygame.KEYDOWN:  # activates when key has been pressed
-        if event.key == pygame.K_DOWN:
-            updating_grid.increase_drop_speed()
-        if event.key == pygame.K_RIGHT:
-            updating_grid.piece_is_moving_right = True
-        if event.key == pygame.K_LEFT:
-            updating_grid.piece_is_moving_left = True
-        if event.key == pygame.K_v:
-            pieces.rotate("right")
-        if event.key == pygame.K_c:
-            pieces.rotate("left")
-        if event.key == pygame.K_RETURN and grid.game_over:
-            grid.reset_game()
+    if event.type == pygame.KEYDOWN:
+       match event.key:  # activates when key has been pressed
+            case pygame.K_DOWN:
+                updating_grid.increase_drop_speed()
+            case pygame.K_RIGHT:
+                updating_grid.piece_is_moving_right = True
+            case pygame.K_LEFT:
+                updating_grid.piece_is_moving_left = True
+            case pygame.K_v:
+                pieces.rotate("right")
+            case pygame.K_c:
+                pieces.rotate("left")
+            case pygame.K_RETURN:
+               if grid.game_over:
+                   grid.reset_game()
 
-    if event.type == pygame.KEYUP:  # activates when key has been released
-        if event.key == pygame.K_DOWN:
-            updating_grid.reset_drop_speed()
-        if event.key == pygame.K_RIGHT:
-            updating_grid.piece_is_moving_right = False
-        if event.key == pygame.K_LEFT:
-            updating_grid.piece_is_moving_left = False
+    if event.type == pygame.KEYUP:
+       match event.key:  # activates when key has been released
+            case pygame.K_DOWN:
+                updating_grid.reset_drop_speed()
+            case pygame.K_RIGHT:
+                updating_grid.piece_is_moving_right = False
+            case pygame.K_LEFT:
+                updating_grid.piece_is_moving_left = False
 
 
 def draw_pieces(target_grid, y_offset):
@@ -80,11 +85,11 @@ def update_graphics():
     piece_display = pygame.image.load(piece_name + ".png")
 
     Window.fill(background_color)  # gives the game something to draw on
-    display_text("current score", window_width - 160, 10, 20, "white")
-    display_text(str(grid.score), window_width - 160, 30, 20, "white")
-    display_text("current level", window_width - 160, 50, 20, "white")
-    display_text(str(grid.level), window_width - 160, 70, 20, "white")
-    display_text("next piece", window_width - 160, 90, 20, "white")
+    display_text("current score", window_width - 175, 10, 20, "white")
+    display_text(str(grid.score), window_width - 175, 30, 20, "white")
+    display_text("current level", window_width - 175, 50, 20, "white")
+    display_text(str(grid.level), window_width - 175, 70, 20, "white")
+    display_text("next piece", window_width - 175, 90, 20, "white")
 
     Window.blit(play_area, (20, 20))  # displays background for the stackable squares
 
