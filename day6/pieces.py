@@ -107,12 +107,32 @@ def set_piece_target(wanted_piece):
 
 def update_piece():
     global current_piece, max_rotation
+    match target_piece:
 
-    for piece_number in range(len(piece_list_names)):
-        if (target_piece == piece_list_names[piece_number]):
-            max_rotation = len(piece_list_object[piece_number]) - 1
-            current_piece = piece_list_object[piece_number][piece_rotation]
-            break
+        case "Long_piece":
+            max_rotation = len(piece_list_object[0]) - 1
+            current_piece = piece_list_object[0][piece_rotation]
+
+        case "T_piece":
+            max_rotation = len(piece_list_object[1]) - 1
+            current_piece = piece_list_object[1][piece_rotation]
+
+        case "Cube_piece":
+            max_rotation = len(piece_list_object[2]) - 1
+            current_piece = piece_list_object[2][piece_rotation]
+        case "L_piece":
+            max_rotation = len(piece_list_object[3]) - 1
+            current_piece = piece_list_object[3][piece_rotation]
+        case "RL_piece":
+            max_rotation = len(piece_list_object[4]) - 1
+            current_piece = piece_list_object[4][piece_rotation]
+        case "S_piece":
+            max_rotation = len(piece_list_object[5]) - 1
+            current_piece = piece_list_object[5][piece_rotation]
+        case "Z_piece":
+                max_rotation = len(piece_list_object[6]) - 1
+                current_piece = piece_list_object[6][piece_rotation]
+
 
 
 def get_current_piece():
