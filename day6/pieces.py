@@ -80,9 +80,10 @@ def randomized_piece():
     global next_piece
     names = ["Long_piece", "T_piece", "Cube_piece", "L_piece", "RL_piece", "S_piece", "Z_piece"]
     random_value = random.randrange(0, 7, 1)
-    next_piece = names[random_value]
     if (random_value == 6 or random_value == 5):
-        if (random.randrange(0, 2, 1) == 0): next_piece = names[random.randrange(0, 7, 1)]
+        if (random.randrange(0, 2, 1) == 0): random_value = random.randrange(0, 7, 1)
+    next_piece = names[random_value]
+
 
 
 def rotate(direction):
@@ -107,29 +108,12 @@ def set_piece_target(wanted_piece):
 def update_piece():
     global current_piece, max_rotation
     objects = [Long_piece, T_piece, Cube_piece, L_piece, RL_piece, S_piece, Z_piece]
-    match target_piece:
-        case "Long_piece":
-            max_rotation = len(objects[0]) - 1
-            current_piece = objects[0][piece_rotation]
-        case "T_piece":
-            max_rotation = len(objects[1]) - 1
-            current_piece = objects[1][piece_rotation]
-        case "Cube_piece":
-            max_rotation = len(objects[2]) - 1
-            current_piece = objects[2][piece_rotation]
-        case "L_piece":
-            max_rotation = len(objects[3]) - 1
-            current_piece = objects[3][piece_rotation]
-        case "RL_piece":
-            max_rotation = len(objects[4]) - 1
-            current_piece = objects[4][piece_rotation]
-        case "S_piece":
-            max_rotation = len(objects[5]) - 1
-            current_piece = objects[5][piece_rotation]
-        case "Z_piece":
-                max_rotation = len(objects[6]) - 1
-                current_piece = objects[6][piece_rotation]
-
+    names = ["Long_piece", "T_piece", "Cube_piece", "L_piece", "RL_piece", "S_piece", "Z_piece"]
+    for piece_number in range(len(names)):
+        if (target_piece == names[piece_number]):
+            max_rotation = len(objects[piece_number]) - 1
+            current_piece = objects[piece_number][piece_rotation]
+            break
 
 
 def get_current_piece():
