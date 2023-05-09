@@ -108,15 +108,12 @@ def update_piece():
     global current_piece, max_rotation
     objects = [Long_piece, T_piece, Cube_piece, L_piece, RL_piece, S_piece, Z_piece]
     match target_piece:
-
         case "Long_piece":
             max_rotation = len(objects[0]) - 1
             current_piece = objects[0][piece_rotation]
-
         case "T_piece":
             max_rotation = len(objects[1]) - 1
             current_piece = objects[1][piece_rotation]
-
         case "Cube_piece":
             max_rotation = len(objects[2]) - 1
             current_piece = objects[2][piece_rotation]
