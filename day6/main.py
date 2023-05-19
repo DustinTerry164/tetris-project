@@ -8,7 +8,7 @@ def setup_window():
     global background_color, Window, window_height, window_width, running, play_area, update_rate, piece_display, game_over_display
 
     pygame.font.init()
-    pygame.display.set_caption("Tetris_project")
+    pygame.display.set_caption("Tetris Project - By Dustin Terry")
     window_height = 900
     window_width = 800
     background_color = (0, 0, 0)
