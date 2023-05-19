@@ -90,6 +90,9 @@ def update_graphics():
     display_text("current level", window_width - 175, 50, 20, "white")
     display_text(str(grid.level), window_width - 175, 70, 20, "white")
     display_text("next piece", window_width - 175, 90, 20, "white")
+    display_text("Controls:", window_width - 175, 390, 20, "white")
+    display_text("Rotate: C or V", window_width - 175, 420, 20, "white")
+    display_text("Move:Arrow Keys", window_width - 175, 450, 20, "white")
 
     Window.blit(play_area, (20, 20))  # displays background for the stackable squares
 
